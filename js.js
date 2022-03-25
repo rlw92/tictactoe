@@ -48,7 +48,7 @@ document.body.appendChild(crecontainer);
 document.querySelector('.gamegrid').style = 'display:flex;flex-wrap:wrap;justify-content:center;';
  for(i=0;i<9;i++) {
  let div = document.createElement('div');
-div.style='padding:2px;width:20vw;height:30vh;background-color:white;border:solid black 2px;'
+div.style='padding:2px;width:20vw;height:25vh;background-color:white;border:solid black 2px;'
 container.appendChild(div);}
  }
  displayGrid();

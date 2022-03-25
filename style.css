@@ -1,5 +1,7 @@
 .screen{display:flex;}
 
+.header{text-align: center;color:rgb(6, 128, 6)}
+
 .player1, .player2{display:flex;
     flex-direction:column;
     justify-content:center;
@@ -10,3 +12,4 @@ padding:4px;}
 
 .player1{border-right:solid red 2px;}
 .player2{border-left:solid blue 2px;}
+
