@@ -1,0 +1,12 @@
+.screen{display:flex;}
+
+.player1, .player2{display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+padding:4px;}
+
+.player1 h2, .player2 h2{color:green;text-decoration: underline;}
+
+.player1{border-right:solid red 2px;}
+.player2{border-left:solid blue 2px;}
