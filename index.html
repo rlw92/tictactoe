@@ -9,21 +9,49 @@
 </head>
 <body>
     <h1 class="header">Tic Tac Toe</h1>
+
+    
+<div class="inputscreen1">
+    <label>Choose Player One's name</label>
+    <input type="text" id="name" value="rhys">
+    <label>Choose your mark</label> 
+    <input maxlength=1 type="text" id="marker" value="x">
+    <button onclick="formcontrols.toinp2()">Enter</button>
+</div>
+
+<div class="inputscreen2"> <label>Choose Player two's name</label>
+    <input type="text" id="name2" value="bec">
+    <label>Choose your mark</label> 
+    <input maxlength=1 type="text" id="marker2" value="o">
+    <button onclick="formcontrols.togame()">Enter</button>
+</div>
+
+
 <div class="screen">
     <div class="player1">
         <h2>Name</h2>
-        <h1>RHYS</h1>
+        <h1 id="player1name">RHYS</h1>
         <h2>Marker</h2>
-        <h1>X</h1>
+        <h1 id="player1marker">X</h1>
     </div>
 
-    <div class="gamegrid"></div>
+    <div class="gamegrid">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 
     <div class="player2">
-        <h2>Name</h2>
-        <h1>BEC</h1>
+        <h2 >Name</h2>
+        <h1 id="player2name">BEC</h1>
         <h2>Marker</h2>
-        <h1>O</h1>
+        <h1 id="player2marker">O</h1>
     </div>
 </div>
 </body>

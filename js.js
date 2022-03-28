@@ -6,50 +6,46 @@
  }
 
  // array of players information
- let playerBase = [{name:'rhys',
-                    mark:'O'}];
+ let playerBase = [{name:'example',
+                    mark:'z'}];
 
- function createPlayer(){
-   let name = document.getElementById('name').value;
-   let marker = document.getElementById('marker').value;
-
-  const newplayer = player(name,marker);
-playerBase.push(newplayer);
- }
-
- //creates the inputs for the players to choose their name and marker
- /*commented out because I wanted to create the initial design first
-then build on it later with this*/
-/*
- function displayform(){
- let playerinput = document.createElement('input');
- playerinput.setAttribute('id','name');
- let markerinput = document.createElement('input');
- markerinput.setAttribute('id','marker');
- let submitButton = document.createElement('button');
- submitButton.classList.add("create");
-
-document.body.appendChild(playerinput);
-document.body.appendChild(markerinput);
-document.body.appendChild(submitButton);}
-displayform();*/
-
-//document.querySelector('.create').addEventListener('click',createPlayer);
-
-//create the tic tac toe grid
-/*commented out because I wanted to create the initial design first
-then build on it later with this*/
-
- function displayGrid(){
- let crecontainer = document.createElement('div');
- crecontainer.classList.add('container');
-document.body.appendChild(crecontainer);
- let container = document.querySelector('.gamegrid');
-document.querySelector('.gamegrid').style = 'display:flex;flex-wrap:wrap;justify-content:center;';
- for(i=0;i<9;i++) {
- let div = document.createElement('div');
-div.style='padding:2px;width:20vw;height:25vh;background-color:white;border:solid black 2px;'
-container.appendChild(div);}
- }
- displayGrid();
  
+
+ 
+//my first module. it controls the initial forms at the start
+ const formcontrols = (()=>{
+   //gets the first form data and hides it
+  const toinp2 = () => {
+   let name = document.getElementById("name").value;
+   document.getElementById("player1name").textContent = name;
+   let marker = document.getElementById("marker").value;
+   document.getElementById("player1marker").textContent = marker;
+
+   document.querySelector(".inputscreen1").style.visibility = "hidden"
+   document.querySelector(".inputscreen2").style.visibility = "visible"
+   const newplayer = player(name,marker);
+playerBase.push(newplayer);
+  }
+
+   //gets the second form data, hides it and displays the grid
+  const togame = () => {
+    let name = document.getElementById("name2").value;
+   document.getElementById("player2name").textContent = name;
+   let marker = document.getElementById("marker2").value;
+   document.getElementById("player2marker").textContent = marker;
+
+   document.querySelector(".inputscreen1").style.display = "none"
+   document.querySelector(".inputscreen2").style.display = "none"
+   document.querySelector(".screen").style.visibility = "visible"
+   const newplayer = player(name,marker);
+playerBase.push(newplayer);
+   
+  }
+
+
+   return {toinp2,
+           togame};
+ })();
+
+ const gameBoardd = 
+
