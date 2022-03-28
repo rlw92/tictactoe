@@ -6,12 +6,9 @@
  }
 
  // array of players information
- let playerBase = [{name:'example',
-                    mark:'z'}];
-
+ let playerBase = [];
  
 
- 
 //my first module. it controls the initial forms at the start
  const formcontrols = (()=>{
    //gets the first form data and hides it
@@ -41,15 +38,41 @@ playerBase.push(newplayer);
 
    const newplayer = player(name,marker);
 playerBase.push(newplayer);
-   
-  }
 
 
-   return {toinp2,
-           togame};
+}
+
+
+     return {toinp2,
+           togame,
+            }
  })();
 
 
+ //mip = markerinplay
+ function chan(){
+   document.body.style = "background-color:yellow;";
+   let mip = "D";
+   return mip;
+ }
 
+
+ const playRound= (()=> {
+
+ const selectbox = ()=>{
+
+ let fields = document.querySelectorAll(".field");
+for (let i = 0; i < fields.length; i++) {
+ fields[i].addEventListener("click",()=>{chan();
+                                        fields[i].textContent = playerBase[1].marker;
+                                         fields[i].style.color = "blue";
+                                        });
+}
+}
+
+return {selectbox}
+
+})();
  
+playRound.selectbox();
 
