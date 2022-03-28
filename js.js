@@ -8,6 +8,7 @@
  // array of players information
  let playerBase = [];
  let gameBoard=["","","","","","","","",""]
+ let mip;
  
 
 //my first module. it controls the initial forms at the start
@@ -39,6 +40,7 @@ playerBase.push(newplayer);
 
    const newplayer = player(name,marker);
 playerBase.push(newplayer);
+mip = playerBase[0].marker;
 
 
 }
@@ -53,11 +55,17 @@ playerBase.push(newplayer);
  //mip = markerinplay
  function chan(){
    document.body.style = "background-color:yellow;";
-   mip = "D";
+  
+   if(mip === playerBase[0].marker){mip = playerBase[1].marker}
+   else if(mip === playerBase[1].marker){mip = playerBase[0].marker}
+   else{mip = playerBase[0].marker}
+  
    
  }
 
-let mip = "f";
+ 
+
+
  const playRound= (()=> {
 
  const selectbox = ()=>{
@@ -65,8 +73,7 @@ let mip = "f";
  let fields = document.querySelectorAll(".field");
 for (let i = 0; i < fields.length; i++) {
   fields[i].textContent = ""
- fields[i].addEventListener("click",()=>{
-                                         fields[i].textContent = mip;
+ fields[i].addEventListener("click",()=>{fields[i].textContent = mip;
                                          fields[i].style.color = "blue";
                                          chan();
                                         });
