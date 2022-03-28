@@ -21,8 +21,9 @@
    let marker = document.getElementById("marker").value;
    document.getElementById("player1marker").textContent = marker;
 
-   document.querySelector(".inputscreen1").style.visibility = "hidden"
-   document.querySelector(".inputscreen2").style.visibility = "visible"
+   document.querySelector(".inputscreen1").style.display = "none"
+   document.querySelector(".inputscreen2").style.display = "flex"
+
    const newplayer = player(name,marker);
 playerBase.push(newplayer);
   }
@@ -37,6 +38,7 @@ playerBase.push(newplayer);
    document.querySelector(".inputscreen1").style.display = "none"
    document.querySelector(".inputscreen2").style.display = "none"
    document.querySelector(".screen").style.visibility = "visible"
+
    const newplayer = player(name,marker);
 playerBase.push(newplayer);
    
@@ -47,5 +49,7 @@ playerBase.push(newplayer);
            togame};
  })();
 
- const gameBoardd = 
+
+
+ 
 
