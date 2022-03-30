@@ -1,14 +1,15 @@
  
  //constructor function
- const player = (name,marker) => {
-    return{name,marker};
+ const player = (name,marker,arr) => {
+    return{name,marker,arr};
 
  }
 
  // array of players information
  let playerBase = [];
  let gameBoard=["","","","","","","","",""]
- let mip;
+  let mip;
+ let pip;
  let col;
  
 
@@ -20,11 +21,11 @@
    document.getElementById("player1name").textContent = name;
    let marker = document.getElementById("marker").value;
    document.getElementById("player1marker").textContent = marker;
-
+   let arr = [];
    document.querySelector(".inputscreen1").style.display = "none"
    document.querySelector(".inputscreen2").style.display = "flex"
 
-   const newplayer = player(name,marker);
+   const newplayer = player(name,marker,arr);
 playerBase.push(newplayer);
   }
 
@@ -39,11 +40,13 @@ playerBase.push(newplayer);
    document.querySelector(".inputscreen2").style.display = "none"
    document.querySelector(".screen").style.visibility = "visible"
 
-   const newplayer = player(name,marker);
+   let arr = [];
+
+   const newplayer = player(name,marker,arr);
 playerBase.push(newplayer);
-//mip is marker in play
-mip = playerBase[0].marker;
 col = "red";
+pip = playerBase[0];
+ 
 
 
 }
@@ -58,9 +61,9 @@ col = "red";
 
   const chan = ()=>{ document.body.style = "background-color:yellow;";
   
-  if(mip === playerBase[0].marker){mip = playerBase[1].marker; col = "blue";}
-  else if(mip === playerBase[1].marker){mip = playerBase[0].marker; col = "red";}
-  else{mip = playerBase[0].marker; col = "red";}
+  if(pip === playerBase[0]){pip = playerBase[1]; col = "blue";}
+  else if(pip === playerBase[1]){pip = playerBase[0]; col = "red";}
+  else{pip = playerBase[0]; col = "red";}
 }
 
  const selectbox = ()=>{
@@ -68,10 +71,12 @@ col = "red";
  let fields = document.querySelectorAll(".field");
 for (let i = 0; i < fields.length; i++) {
   fields[i].textContent = ""
- fields[i].addEventListener("click",()=>{fields[i].textContent = mip;
+ fields[i].addEventListener("click",()=>{
+                                        fields[i].textContent = pip.marker;
                                          fields[i].style.color = col;
                                          let f = fields[i].dataset.index
                                          gameBoard.splice(+f, 1, +f);
+                                         pip.arr.push(+f);
                                          playRound.chan();
                                          //added below log just to check theyre being added
                                          console.log(gameBoard);
