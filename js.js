@@ -25,6 +25,9 @@ let winArr = [
 [6,7,8]
 ]
 
+//gonna use this variable to control how the boared changes when there is a winner
+let winner = false;
+
 
   
  
@@ -83,6 +86,12 @@ pip = playerBase[0];
   else{pip = playerBase[0]; col = "red";}
 }
 
+const clearBoard = () => {
+                          playerBase[0].arr = [];
+                          playerBase[1].arr = [];
+                           //player in play
+                           winner = false;}
+
 //deciding function to see if there is a winning match
 const decide = darr => {
   for(d=0;d<winArr.length;d++){
@@ -100,7 +109,7 @@ darr[i];
  
 
 
-}}if(arr3.length===3){alert("winning match "+ pip.name +" has won");}}} 
+}}if(arr3.length===3){alert("winning match "+ pip.name +" has won");winner = true;}}} 
 
 //function that is called when someone clicks a box
  const selectbox = ()=>{
@@ -114,15 +123,17 @@ for (let i = 0; i < fields.length; i++) {
                                          let f = fields[i].dataset.index
                                          pip.arr.push(+f);
                                          playRound.decide(pip.arr)
+                                         if(winner === true){playRound.clearBoard()}
+                                         else{
                                          playRound.chan();
                                          //added below log just to check theyre being added
                                          gameBoard.splice(+f, 1, +f);
-                                         console.log(gameBoard);
+                                         console.log(gameBoard);}
                                         });
 }
 }
 
-return {selectbox, chan, decide}
+return {selectbox, chan, decide, clearBoard}
 
 })();
  
