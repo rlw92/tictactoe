@@ -26,7 +26,7 @@ let winArr = [
 [6,7,8]
 ]
  //test 
- let arr1 = [1,2,3];
+ let arr1 = [4,2,6,0];
  let arr2 = [1,2,3];
  
  /* practice code to be deleted when feature has been built
@@ -50,21 +50,19 @@ let winArr = [
 
   //decider function 
   const decide = () => {
-    
-  for (i=0;i<arr1.length;i++){
+      for(d=0;d<winArr.length;d++){
+      winArr[d];
     let arr3 = [];
+  for (i=0;i<arr1.length;i++){
+    
     arr1[i];
 
-   
-    for(d=0;d<winArr.length;d++){
-      winArr[d];
-      
      for(z=0;z<winArr[d].length;z++){       
       
       if(arr1[i]===winArr[d][z]){
       arr3.push(arr1[i])}
       else {console.log("no match");}
-      console.log(arr3);
+     
     
 
     }}if(arr3.length===3){alert("winning match")}}}  
