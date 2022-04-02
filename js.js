@@ -14,7 +14,6 @@
  let col;
  //winning arrays:
 let winArr = [
-  /*mock to test*/[1,2,3],
 [0,3,6],
 [0,4,8],
 [0,1,2],
@@ -25,47 +24,9 @@ let winArr = [
 [3,4,5],
 [6,7,8]
 ]
- //test 
- let arr1 = [4,2,6,0];
- let arr2 = [1,2,3];
- 
- /* practice code to be deleted when feature has been built
- const decider = () => {
-   let arr3 = [];
- for (i=0;i<arr1.length;i++){
-   arr1[i];
 
-   for(d=0;d<arr2.length;d++){
 
-   if(arr1[i]===arr2[d]){
-     arr3.push(arr1[i])}
-     else {console.log("no winning match");}
-   }
-   if(arr3.length===3){alert("winning match")}
-   
-   }
- 
-  }
-  */
-
-  //decider function 
-  const decide = () => {
-      for(d=0;d<winArr.length;d++){
-      winArr[d];
-    let arr3 = [];
-  for (i=0;i<arr1.length;i++){
-    
-    arr1[i];
-
-     for(z=0;z<winArr[d].length;z++){       
-      
-      if(arr1[i]===winArr[d][z]){
-      arr3.push(arr1[i])}
-      else {console.log("no match");}
-     
-    
-
-    }}if(arr3.length===3){alert("winning match")}}}  
+  
  
 
 //my first module. it controls the initial forms at the start
@@ -100,6 +61,7 @@ playerBase.push(newplayer);
    const newplayer = player(name,marker,arr);
 playerBase.push(newplayer);
 col = "red";
+//player in play
 pip = playerBase[0];
  
 
@@ -121,6 +83,26 @@ pip = playerBase[0];
   else{pip = playerBase[0]; col = "red";}
 }
 
+//deciding function to see if there is a winning match
+const decide = darr => {
+  for(d=0;d<winArr.length;d++){
+  winArr[d];
+let arr3 = [];
+for (i=0;i<darr.length;i++){
+
+darr[i];
+
+ for(z=0;z<winArr[d].length;z++){       
+  
+  if(darr[i]===winArr[d][z]){
+  arr3.push(darr[i])}
+  else {console.log("no match");}
+ 
+
+
+}}if(arr3.length===3){alert("winning match "+ pip.name +" has won");}}} 
+
+//function that is called when someone clicks a box
  const selectbox = ()=>{
 
  let fields = document.querySelectorAll(".field");
@@ -131,6 +113,7 @@ for (let i = 0; i < fields.length; i++) {
                                          fields[i].style.color = col;
                                          let f = fields[i].dataset.index
                                          pip.arr.push(+f);
+                                         playRound.decide(pip.arr)
                                          playRound.chan();
                                          //added below log just to check theyre being added
                                          gameBoard.splice(+f, 1, +f);
@@ -139,7 +122,7 @@ for (let i = 0; i < fields.length; i++) {
 }
 }
 
-return {selectbox, chan}
+return {selectbox, chan, decide}
 
 })();
  
