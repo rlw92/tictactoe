@@ -28,6 +28,11 @@ let winArr = [
 //gonna use this variable to control how the boared changes when there is a winner
 let winner = false;
 
+//turncounter will be used to count the amount of turns and decide on a draw
+let turncounter = 1;
+
+
+
 
   
  
@@ -79,22 +84,30 @@ pip = playerBase[0];
 
  const playRound= (()=> {
 
-  const chan = ()=>{ document.body.style = "background-color:yellow;";
-  
+  //function that changes the player and counts the turns
+  const chan = ()=>{   
   if(pip === playerBase[0]){pip = playerBase[1]; col = "blue";}
   else if(pip === playerBase[1]){pip = playerBase[0]; col = "red";}
   else{pip = playerBase[0]; col = "red";}
+  console.log("turns: "+ turncounter);
+  ++turncounter; 
 }
 
+//function that clears the board and returns to first player
 const clearBoard = () => {
   let fields = document.querySelectorAll(".field");
 for (let i = 0; i < fields.length; i++) {
-  fields[i].textContent = "";}
+  fields[i].textContent = "";
+  fields[i].dataset.chosen = "0";}
   
                           playerBase[0].arr = [];
                           playerBase[1].arr = [];
                            //player in play
-                           winner = false;}
+                           winner = false;
+                           turncounter = 1;
+                           pip = playerBase[0];
+                          col = "red";
+                          gameBoard=["","","","","","","","",""]}
 
 //deciding function to see if there is a winning match
 const decide = darr => {
@@ -113,7 +126,11 @@ darr[i];
  
 
 
-}}if(arr3.length===3){alert("winning match "+ pip.name +" has won");winner = true;}}} 
+}}
+if(arr3.length===3){alert("winning match "+ pip.name +" has won");winner = true;}
+if(turncounter === 9 && arr3.length < 3){alert("draw");winner = true; turncounter =1;}
+else if(turncounter === 9 && arr3.length === 3){alert("winning match "+ pip.name +" has won");winner=true}
+  }} 
 
 //function that is called when someone clicks a box
  const selectbox = ()=>{
@@ -122,10 +139,13 @@ darr[i];
 for (let i = 0; i < fields.length; i++) {
   fields[i].textContent = ""
  fields[i].addEventListener("click",()=>{
+                                  if(fields[i].dataset.chosen==="1"){alert("You must pick an empty square");}
+                                      else{
                                         fields[i].textContent = pip.marker;
                                          fields[i].style.color = col;
-                                         let f = fields[i].dataset.index
-                                         pip.arr.push(+f);
+                                         fields[i].dataset.chosen = "1";
+                                         let f = fields[i].dataset.index;
+                                          pip.arr.push(+f);
                                          playRound.decide(pip.arr)
                                          if(winner === true){playRound.clearBoard()}
                                          else{
@@ -133,8 +153,9 @@ for (let i = 0; i < fields.length; i++) {
                                          //added below log just to check theyre being added
                                          gameBoard.splice(+f, 1, +f);
                                          console.log(gameBoard);}
-                                        });
-}
+ }}); 
+
+                                      }
 }
 
 return {selectbox, chan, decide, clearBoard}
