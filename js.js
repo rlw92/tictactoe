@@ -87,6 +87,10 @@ pip = playerBase[0];
 }
 
 const clearBoard = () => {
+  let fields = document.querySelectorAll(".field");
+for (let i = 0; i < fields.length; i++) {
+  fields[i].textContent = "";}
+  
                           playerBase[0].arr = [];
                           playerBase[1].arr = [];
                            //player in play
